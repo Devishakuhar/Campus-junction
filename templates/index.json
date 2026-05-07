@@ -440,10 +440,25 @@
             "button_rDFcG3": {
               "type": "button",
               "settings": {
-                "label": "Shop now",
+                "label": "Find a Tutor",
                 "link": "shopify://collections/all",
                 "open_in_new_tab": false,
-                "style_class": "link",
+                "style_class": "button",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "button_nWVBiD": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Start Marketplace",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button",
                 "width": "fit-content",
                 "custom_width": 100,
                 "width_mobile": "fit-content",
@@ -455,7 +470,8 @@
           "block_order": [
             "spacer_BakeNf",
             "group_jjCVVe",
-            "button_rDFcG3"
+            "button_rDFcG3",
+            "button_nWVBiD"
           ]
         },
         "group_DpdniB": {
@@ -509,25 +525,10 @@
                 "pixel_size_mobile": 120
               },
               "blocks": {}
-            },
-            "button_Kridz9": {
-              "type": "button",
-              "settings": {
-                "label": "Shop now",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
             }
           },
           "block_order": [
-            "spacer_ExzteY",
-            "button_Kridz9"
+            "spacer_ExzteY"
           ]
         }
       },
