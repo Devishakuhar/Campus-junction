@@ -3,149 +3,230 @@
 
     <!-- HERO -->
     <div class="bb-hero">
-      <div class="bb-launch-tag">NEW LAUNCH</div>
+
+      <div class="bb-launch-tag">
+        NEW LAUNCH
+      </div>
 
       <div class="bb-hero-grid">
+
         <div class="bb-content">
-          <h1>{{ section.settings.hero_title }}</h1>
-          <p>{{ section.settings.hero_description }}</p>
+          {% if section.settings.hero_title != blank %}
+            <h1>{{ section.settings.hero_title }}</h1>
+          {% endif %}
+
+          {% if section.settings.hero_description != blank %}
+            <p>{{ section.settings.hero_description }}</p>
+          {% endif %}
         </div>
 
         <div class="bb-image">
           {% if section.settings.hero_image %}
             {{
               section.settings.hero_image
-              | image_url: width: 1000
-              | image_tag
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1200'
             }}
           {% endif %}
         </div>
+
       </div>
     </div>
 
     <!-- BUILT TO LAST -->
+
     <div class="bb-built">
+
       <h2>BUILT WITH THE INTENT TO LAST</h2>
 
       <div class="bb-fit-grid">
+
         {% for block in section.blocks %}
           {% if block.type == 'fit_image' %}
             <div class="bb-fit-item">
-              {{
-                block.settings.image
-                | image_url: width: 500
-                | image_tag
-              }}
-              <span>{{ block.settings.label }}</span>
+
+              {% if block.settings.image %}
+                {{
+                  block.settings.image
+                  | image_url: width: 600
+                  | image_tag
+                }}
+              {% endif %}
+
+              {% if block.settings.label != blank %}
+                <span>{{ block.settings.label }}</span>
+              {% endif %}
+
             </div>
           {% endif %}
         {% endfor %}
+
       </div>
+
     </div>
 
     <!-- PRODUCT 1 -->
+
     <div class="bb-product">
-      <h2>{{ section.settings.product1_title }}</h2>
+
+      {% if section.settings.product1_title != blank %}
+        <h2>{{ section.settings.product1_title }}</h2>
+      {% endif %}
 
       <div class="bb-product-grid">
+
         <div class="bb-product-image">
-          {{
-            section.settings.product1_image
-            | image_url: width: 1200
-            | image_tag
-          }}
+          {% if section.settings.product1_image %}
+            {{
+              section.settings.product1_image
+              | image_url: width: 1200
+              | image_tag
+            }}
+          {% endif %}
         </div>
 
         <div class="bb-product-content">
-          <p>{{ section.settings.product1_text }}</p>
 
-          <a href="{{ section.settings.product1_link }}"
-             class="bb-btn">
-            SHOP NOW
-          </a>
+          {% if section.settings.product1_text != blank %}
+            <p>{{ section.settings.product1_text }}</p>
+          {% endif %}
 
-          {{
-            section.settings.product1_fabric
-            | image_url: width: 600
-            | image_tag
-          }}
+          {% if section.settings.product1_link != blank %}
+            <a
+              href="{{ section.settings.product1_link }}"
+              class="bb-btn">
+              SHOP NOW
+            </a>
+          {% endif %}
+
+          {% if section.settings.product1_fabric %}
+            {{
+              section.settings.product1_fabric
+              | image_url: width: 600
+              | image_tag
+            }}
+          {% endif %}
+
         </div>
+
       </div>
+
     </div>
 
     <!-- HERITAGE -->
+
     <div class="bb-heritage">
 
       <div class="bb-heritage-text">
+
         <h2>WHAT MAKES SELVEDGE DIFFERENT?</h2>
-        <p>{{ section.settings.heritage_text }}</p>
+
+        {% if section.settings.heritage_text != blank %}
+          <p>{{ section.settings.heritage_text }}</p>
+        {% endif %}
+
       </div>
 
       <div class="bb-heritage-image">
-        {{
-          section.settings.heritage_image
-          | image_url: width: 1000
-          | image_tag
-        }}
+
+        {% if section.settings.heritage_image %}
+          {{
+            section.settings.heritage_image
+            | image_url: width: 1200
+            | image_tag
+          }}
+        {% endif %}
+
       </div>
 
     </div>
 
     <!-- PRODUCT 2 -->
+
     <div class="bb-product">
 
-      <h2>{{ section.settings.product2_title }}</h2>
+      {% if section.settings.product2_title != blank %}
+        <h2>{{ section.settings.product2_title }}</h2>
+      {% endif %}
 
       <div class="bb-product-grid">
 
         <div class="bb-product-image">
-          {{
-            section.settings.product2_image
-            | image_url: width: 1200
-            | image_tag
-          }}
+          {% if section.settings.product2_image %}
+            {{
+              section.settings.product2_image
+              | image_url: width: 1200
+              | image_tag
+            }}
+          {% endif %}
         </div>
 
         <div class="bb-product-content">
-          <p>{{ section.settings.product2_text }}</p>
 
-          <a href="{{ section.settings.product2_link }}"
-             class="bb-btn">
-            SHOP NOW
-          </a>
+          {% if section.settings.product2_text != blank %}
+            <p>{{ section.settings.product2_text }}</p>
+          {% endif %}
+
+          {% if section.settings.product2_link != blank %}
+            <a
+              href="{{ section.settings.product2_link }}"
+              class="bb-btn">
+              SHOP NOW
+            </a>
+          {% endif %}
+
         </div>
 
       </div>
+
     </div>
 
     <!-- PRODUCT 3 -->
+
     <div class="bb-product">
 
-      <h2>{{ section.settings.product3_title }}</h2>
+      {% if section.settings.product3_title != blank %}
+        <h2>{{ section.settings.product3_title }}</h2>
+      {% endif %}
 
       <div class="bb-product-grid">
 
         <div class="bb-product-image">
-          {{
-            section.settings.product3_image
-            | image_url: width: 1200
-            | image_tag
-          }}
+
+          {% if section.settings.product3_image %}
+            {{
+              section.settings.product3_image
+              | image_url: width: 1200
+              | image_tag
+            }}
+          {% endif %}
+
         </div>
 
         <div class="bb-product-content">
-          <p>{{ section.settings.product3_text }}</p>
 
-          <a href="{{ section.settings.product3_link }}"
-             class="bb-btn">
-            SHOP NOW
-          </a>
+          {% if section.settings.product3_text != blank %}
+            <p>{{ section.settings.product3_text }}</p>
+          {% endif %}
+
+          {% if section.settings.product3_link != blank %}
+            <a
+              href="{{ section.settings.product3_link }}"
+              class="bb-btn">
+              SHOP NOW
+            </a>
+          {% endif %}
+
         </div>
 
       </div>
+
     </div>
 
-    <!-- BORN FROM WORK -->
+    <!-- STORY -->
+
     <div class="bb-story">
 
       <h2>BORN FROM WORK</h2>
@@ -153,27 +234,39 @@
       <div class="bb-story-grid">
 
         <div class="bb-story-images">
-          {{
-            section.settings.story_image_1
-            | image_url: width: 600
-            | image_tag
-          }}
 
-          {{
-            section.settings.story_image_2
-            | image_url: width: 600
-            | image_tag
-          }}
+          {% if section.settings.story_image_1 %}
+            {{
+              section.settings.story_image_1
+              | image_url: width: 600
+              | image_tag
+            }}
+          {% endif %}
+
+          {% if section.settings.story_image_2 %}
+            {{
+              section.settings.story_image_2
+              | image_url: width: 600
+              | image_tag
+            }}
+          {% endif %}
+
         </div>
 
         <div class="bb-story-content">
-          <p>{{ section.settings.story_text }}</p>
 
-          {{
-            section.settings.story_product
-            | image_url: width: 1000
-            | image_tag
-          }}
+          {% if section.settings.story_text != blank %}
+            <p>{{ section.settings.story_text }}</p>
+          {% endif %}
+
+          {% if section.settings.story_product %}
+            {{
+              section.settings.story_product
+              | image_url: width: 1200
+              | image_tag
+            }}
+          {% endif %}
+
         </div>
 
       </div>
@@ -181,11 +274,17 @@
     </div>
 
     <!-- CTA -->
+
     <div class="bb-footer-cta">
-      <a href="{{ section.settings.final_link }}"
-         class="bb-btn">
-        EXPLORE APPAREL
-      </a>
+
+      {% if section.settings.final_link != blank %}
+        <a
+          href="{{ section.settings.final_link }}"
+          class="bb-btn">
+          EXPLORE APPAREL
+        </a>
+      {% endif %}
+
     </div>
 
   </div>
@@ -194,46 +293,38 @@
 <style>
 
 .bb-landing{
-  background:#e9e0d1;
-  color:#222;
-  font-family:Arial,sans-serif;
+  background:#e8e1d4;
   padding:60px 20px;
 }
 
 .bb-container{
   max-width:1200px;
-  margin:auto;
+  margin:0 auto;
 }
 
 .bb-launch-tag{
   display:inline-block;
-  background:#d8742d;
+  background:#d56f2a;
   color:#fff;
-  padding:8px 14px;
+  padding:10px 18px;
   font-weight:700;
-  margin-bottom:25px;
+  margin-bottom:30px;
 }
 
 .bb-hero-grid,
 .bb-product-grid,
-.bb-story-grid,
-.bb-heritage{
+.bb-heritage,
+.bb-story-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:50px;
   align-items:center;
 }
 
-.bb-hero h1,
-.bb-product h2,
-.bb-story h2,
-.bb-built h2{
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.bb-built{
-  margin:100px 0;
+.bb-built,
+.bb-product,
+.bb-story{
+  margin-top:80px;
 }
 
 .bb-fit-grid{
@@ -247,44 +338,27 @@
   text-align:center;
 }
 
-.bb-fit-item img{
-  width:100%;
-}
-
-.bb-product{
-  margin:100px 0;
-}
-
-.bb-product img,
+.bb-fit-item img,
+.bb-product-image img,
+.bb-image img,
 .bb-story img,
-.bb-heritage img,
-.bb-image img{
+.bb-heritage img{
   width:100%;
   display:block;
+}
+
+.bb-btn{
+  display:inline-block;
+  background:#000;
+  color:#fff;
+  text-decoration:none;
+  padding:14px 30px;
+  font-weight:700;
 }
 
 .bb-product-content{
   display:flex;
   flex-direction:column;
-  gap:20px;
-}
-
-.bb-btn{
-  display:inline-block;
-  background:#111;
-  color:#fff;
-  padding:14px 28px;
-  text-decoration:none;
-  font-weight:700;
-  width:fit-content;
-}
-
-.bb-story{
-  margin:100px 0;
-}
-
-.bb-story-images{
-  display:flex;
   gap:20px;
 }
 
@@ -297,8 +371,8 @@
 
   .bb-hero-grid,
   .bb-product-grid,
-  .bb-story-grid,
-  .bb-heritage{
+  .bb-heritage,
+  .bb-story-grid{
     grid-template-columns:1fr;
   }
 
@@ -306,9 +380,6 @@
     grid-template-columns:1fr;
   }
 
-  .bb-story-images{
-    flex-direction:column;
-  }
 }
 
 </style>
@@ -318,152 +389,151 @@
   "name": "Blue Blood Landing",
   "settings": [
     {
-      "type":"text",
-      "id":"hero_title",
-      "label":"Hero Title",
-      "default":"BLUE BLOOD SELVEDGE"
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "BLUE BLOOD SELVEDGE"
     },
     {
-      "type":"textarea",
-      "id":"hero_description",
-      "label":"Hero Description"
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero Description"
     },
     {
-      "type":"image_picker",
-      "id":"hero_image",
-      "label":"Hero Image"
-    },
-
-    {
-      "type":"text",
-      "id":"product1_title",
-      "label":"Product 1 Title",
-      "default":"Blue Blood 2.0 True Straight"
-    },
-    {
-      "type":"textarea",
-      "id":"product1_text",
-      "label":"Product 1 Description"
-    },
-    {
-      "type":"image_picker",
-      "id":"product1_image",
-      "label":"Product 1 Image"
-    },
-    {
-      "type":"image_picker",
-      "id":"product1_fabric",
-      "label":"Product 1 Fabric Image"
-    },
-    {
-      "type":"url",
-      "id":"product1_link",
-      "label":"Product 1 Link"
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
     },
 
     {
-      "type":"textarea",
-      "id":"heritage_text",
-      "label":"Heritage Text"
+      "type": "text",
+      "id": "product1_title",
+      "label": "Product 1 Title"
     },
     {
-      "type":"image_picker",
-      "id":"heritage_image",
-      "label":"Heritage Image"
-    },
-
-    {
-      "type":"text",
-      "id":"product2_title",
-      "label":"Product 2 Title"
+      "type": "textarea",
+      "id": "product1_text",
+      "label": "Product 1 Text"
     },
     {
-      "type":"textarea",
-      "id":"product2_text",
-      "label":"Product 2 Text"
+      "type": "image_picker",
+      "id": "product1_image",
+      "label": "Product 1 Image"
     },
     {
-      "type":"image_picker",
-      "id":"product2_image",
-      "label":"Product 2 Image"
+      "type": "image_picker",
+      "id": "product1_fabric",
+      "label": "Product 1 Fabric Image"
     },
     {
-      "type":"url",
-      "id":"product2_link",
-      "label":"Product 2 Link"
+      "type": "url",
+      "id": "product1_link",
+      "label": "Product 1 Link"
     },
 
     {
-      "type":"text",
-      "id":"product3_title",
-      "label":"Product 3 Title"
+      "type": "textarea",
+      "id": "heritage_text",
+      "label": "Heritage Text"
     },
     {
-      "type":"textarea",
-      "id":"product3_text",
-      "label":"Product 3 Text"
-    },
-    {
-      "type":"image_picker",
-      "id":"product3_image",
-      "label":"Product 3 Image"
-    },
-    {
-      "type":"url",
-      "id":"product3_link",
-      "label":"Product 3 Link"
+      "type": "image_picker",
+      "id": "heritage_image",
+      "label": "Heritage Image"
     },
 
     {
-      "type":"image_picker",
-      "id":"story_image_1",
-      "label":"Story Image 1"
+      "type": "text",
+      "id": "product2_title",
+      "label": "Product 2 Title"
     },
     {
-      "type":"image_picker",
-      "id":"story_image_2",
-      "label":"Story Image 2"
+      "type": "textarea",
+      "id": "product2_text",
+      "label": "Product 2 Text"
     },
     {
-      "type":"image_picker",
-      "id":"story_product",
-      "label":"Story Product"
+      "type": "image_picker",
+      "id": "product2_image",
+      "label": "Product 2 Image"
     },
     {
-      "type":"textarea",
-      "id":"story_text",
-      "label":"Story Text"
+      "type": "url",
+      "id": "product2_link",
+      "label": "Product 2 Link"
     },
 
     {
-      "type":"url",
-      "id":"final_link",
-      "label":"Final CTA Link"
+      "type": "text",
+      "id": "product3_title",
+      "label": "Product 3 Title"
+    },
+    {
+      "type": "textarea",
+      "id": "product3_text",
+      "label": "Product 3 Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "product3_image",
+      "label": "Product 3 Image"
+    },
+    {
+      "type": "url",
+      "id": "product3_link",
+      "label": "Product 3 Link"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "story_image_1",
+      "label": "Story Image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_image_2",
+      "label": "Story Image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "story_product",
+      "label": "Story Product"
+    },
+    {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Story Text"
+    },
+
+    {
+      "type": "url",
+      "id": "final_link",
+      "label": "Final CTA Link"
     }
   ],
 
-  "blocks":[
+  "blocks": [
     {
-      "type":"fit_image",
-      "name":"Fit Image",
-      "settings":[
+      "type": "fit_image",
+      "name": "Fit Image",
+      "settings": [
         {
-          "type":"image_picker",
-          "id":"image",
-          "label":"Image"
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         },
         {
-          "type":"text",
-          "id":"label",
-          "label":"Label"
+          "type": "text",
+          "id": "label",
+          "label": "Label"
         }
       ]
     }
   ],
 
-  "presets":[
+  "presets": [
     {
-      "name":"Blue Blood Landing"
+      "name": "Blue Blood Landing"
     }
   ]
 }
