@@ -77,12 +77,12 @@
         "product3_title": "",
         "product3_text": "",
         "product3_image": "shopify://shop_images/07f31c55281bfbd7ff7dad51fda335aa.jpg",
-        "product3_link": "",
+        "product3_link": "shopify://collections/all",
         "story_image_1": "shopify://shop_images/c861d2a20b69bb92f79120722e2bd9aa.jpg",
         "story_image_2": "shopify://shop_images/Full-Count-1108-selvedge.webp",
         "story_product": "shopify://shop_images/14-Best-Japanese-Denim-Brands-What-is-Japanese-Selvedge-Denim.jpg",
         "story_text": "",
-        "final_link": ""
+        "final_link": "shopify://collections/all"
       }
     }
   },
