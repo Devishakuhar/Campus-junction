@@ -55,9 +55,30 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "blue_blood_landing_7DCRJr": {
+      "type": "blue-blood-landing",
+      "name": "Blue Blood Landing",
+      "settings": {
+        "hero_title": "BLUE BLOOD SELVEDGE",
+        "hero_description": "",
+        "product1_title": "Blue Blood 2.0 True Straight",
+        "product1_text": "",
+        "product1_link": "",
+        "heritage_text": "",
+        "product2_title": "",
+        "product2_text": "",
+        "product2_link": "",
+        "product3_title": "",
+        "product3_text": "",
+        "product3_link": "",
+        "story_text": "",
+        "final_link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "blue_blood_landing_7DCRJr"
   ]
 }
