@@ -136,13 +136,13 @@
   {% endfor %}
 
   {% assign variant_display = current_variant.metafields.custom.variant_color_swatch.value %}
-
+ {{ variant_color_swatch.value }}
   {% assign swatch_image = featured_media %}
 
   {% if variant_display != blank and variant_display.variant_image != blank %}
     {% assign swatch_image = variant_display.variant_image %}
   {% endif %}
-{{  swatch_image }}
+
   {% render 'swatch',
     swatch: product_option_value.swatch,
     variant_image: swatch_image,
