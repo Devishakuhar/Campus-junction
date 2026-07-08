@@ -6,7 +6,21 @@
   @param {object} section - The section object.
   @param {object} product - The current product object (used to determine selected variant state).
 {%- enddoc -%}
+<style>
+  .custom-variant-image img{
+    width:40px;
+    height:40px;
+    object-fit:cover;
+    border-radius:50%;
+    display:block;
+}
 
+.variant-option__button-label{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+  </style>
 {% assign block_settings = block.settings %}
 
 {% unless product_resource.has_only_default_variant %}
