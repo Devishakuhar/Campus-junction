@@ -115,21 +115,49 @@
                   {% endif %}
                 >
                 {% if variant_style == 'swatch' %}
-                  {% liquid
-                    assign featured_media = product_option_value.variant.featured_media
+                {% liquid
+  assign featured_media = product_option_value.variant.featured_media
 
-                    # If the variant has no featured media, and we have a combined listing product, then fall back to
-                    # using the featured media of the child product that is linked to this option value.
-                    if featured_media == blank and product_option_value.product_url
-                      assign featured_media = product_option_value.variant.product.featured_media
-                    endif
-                  %}
+  if featured_media == blank and product_option_value.product_url
+    assign featured_media = product_option_value.variant.product.featured_media
+  endif
 
-                  {% render 'swatch',
-                    swatch: product_option_value.swatch,
-                    variant_image: featured_media,
-                    mode: 'unscaled'
-                  %}
+  assign variant_display = product_option_value.variant.metafields.custom.variant_display.value
+
+  assign meta_image = blank
+  assign meta_color = blank
+
+  if variant_display
+    assign meta_image = variant_display.image
+    assign meta_color = variant_display.color
+  endif
+%}
+
+{% if meta_image != blank %}
+
+  {% render 'swatch',
+    swatch: null,
+    variant_image: meta_image,
+    mode: 'unscaled'
+  %}
+
+{% elsif meta_color != blank %}
+
+  {% render 'swatch',
+    swatch: meta_color,
+    variant_image: null,
+    mode: 'unscaled'
+  %}
+
+{% else %}
+
+  {% render 'swatch',
+    swatch: product_option_value.swatch,
+    variant_image: featured_media,
+    mode: 'unscaled'
+  %}
+
+{% endif %}
                 {% else %}
                   {% if product_option_value.available == true %}
                     <span
@@ -142,6 +170,7 @@
                     data-key="variant-option-text"
                   >
                     {{- product_option_value | escape -}}
+                    
                   </span>
                 {% endif %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
