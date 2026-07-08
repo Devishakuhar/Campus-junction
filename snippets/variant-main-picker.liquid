@@ -122,13 +122,9 @@
   if featured_media == blank and product_option_value.product_url
     assign featured_media = product_option_value.variant.product.featured_media
   endif
-
-  
 %}
-
 {% assign variant_display = product_option_value.variant.metafields.custom.variant_color_swatch.value %}
 {% if variant_display and variant_display.variant_image %}
-
   {{
     variant_display.variant_image
     | image_url: width: 60
