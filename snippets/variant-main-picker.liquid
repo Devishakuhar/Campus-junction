@@ -70,17 +70,15 @@
         -%}
 
         {%- if product_option.values.size == 1 and variant_style != 'swatch' -%}
-          <div
-            class="variant-option"
-            data-testid="variant-option-single"
-          >
-            {{- product_option.name | escape -}}
-            <span
-              class="variant-option__swatch-value"
-              data-testid="variant-option-single-value"
-            >
-              {{- product_option.selected_value -}}
-            </span>
+         {% assign variant_display = product_option_value.variant.metafields.custom.variant_color_swatch.value %}
+{% if variant_display and variant_display.variant_image %}
+  {{
+    variant_display.variant_image
+    | image_url: width: 60
+    | image_tag: loading: 'lazy'
+  }}
+{% endif %}
+{% else %}
           </div>
         {%- elsif variant_style == 'swatch' or block_settings.variant_style == 'buttons' -%}
           {%- assign fieldset_index = forloop.index0 -%}
