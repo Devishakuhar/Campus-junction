@@ -7,19 +7,7 @@
   @param {object} product - The current product object (used to determine selected variant state).
 {%- enddoc -%}
 <style>
-  .custom-variant-image img{
-    width:40px;
-    height:40px;
-    object-fit:cover;
-    border-radius:50%;
-    display:block;
-}
-
-.variant-option__button-label{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+  
   </style>
 {% assign block_settings = block.settings %}
 
@@ -128,32 +116,39 @@
                     data-current-checked="false"
                   {% endif %}
                 >
-                {% if variant_style == 'swatch' %}
-               
+{% if variant_style == 'swatch' %}
+
   {% liquid
-  assign featured_media = product_option_value.variant.featured_media
+    assign featured_media = product_option_value.variant.featured_media
 
-  if featured_media == blank and product_option_value.product_url
-    assign featured_media = product_option_value.variant.product.featured_media
-  endif
-%}
-{% assign variant_display = product_option_value.variant.metafields.custom.variant_color_swatch.value %}
-{% if variant_display and variant_display.variant_image %}
-  {{
-    variant_display.variant_image
-    | image_url: width: 60
-    | image_tag: loading: 'lazy'
-  }}
+    if featured_media == blank and product_option_value.product_url
+      assign featured_media = product_option_value.variant.product.featured_media
+    endif
+  %}
 
-{% else %}
+  {% assign current_variant = blank %}
+
+  {% for variant in product_resource.variants %}
+    {% if variant.option2 == product_option_value.name %}
+      {% assign current_variant = variant %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign variant_display = current_variant.metafields.custom.variant_color_swatch.value %}
+
+  {% assign swatch_image = featured_media %}
+
+  {% if variant_display != blank and variant_display.variant_image != blank %}
+    {% assign swatch_image = variant_display.variant_image %}
+  {% endif %}
 
   {% render 'swatch',
     swatch: product_option_value.swatch,
-    variant_image: featured_media,
-    mode: 'unscaled'
+    variant_image: swatch_image,
+    mode: 'unscaled',
+    label: product_option_value.name
   %}
-
-{% endif %}
                 {% else %}
                   {% if product_option_value.available == true %}
                     <span
