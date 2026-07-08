@@ -115,7 +115,8 @@
                   {% endif %}
                 >
                 {% if variant_style == 'swatch' %}
-                {% liquid
+               
+  {% liquid
   assign featured_media = product_option_value.variant.featured_media
 
   if featured_media == blank and product_option_value.product_url
@@ -123,31 +124,27 @@
   endif
 
   assign variant_display = product_option_value.variant.metafields.custom.variant_color_swatch.value
-
-  assign meta_image = blank
-  assign meta_color = blank
-
-  if variant_display
-    assign meta_image = variant_display.variant_image
-    assign meta_color = variant_display.color_swatch
-  endif
 %}
 
-{% if meta_image != blank %}
+{% if variant_display != blank and variant_display.variant_image != blank %}
 
-  {% render 'swatch',
-    swatch: null,
-    variant_image: meta_image,
-    mode: 'unscaled'
-  %}
+  <span class="custom-variant-swatch">
+    {{
+      variant_display.variant_image
+      | image_url: width: 60
+      | image_tag:
+        loading: 'lazy',
+        widths: '60',
+        alt: product_option_value.name
+    }}
+  </span>
 
-{% elsif meta_color != blank %}
+{% elsif variant_display != blank and variant_display.color_swatch != blank %}
 
-  {% render 'swatch',
-    swatch: meta_color,
-    variant_image: null,
-    mode: 'unscaled'
-  %}
+  <span
+    class="custom-variant-color"
+    style="background-color: {{ variant_display.color_swatch }};"
+  ></span>
 
 {% else %}
 
