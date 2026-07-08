@@ -126,25 +126,15 @@
   assign variant_display = product_option_value.variant.metafields.custom.variant_color_swatch.value
 %}
 
-{% if variant_display != blank and variant_display.variant_image != blank %}
+{% assign variant_display = product_option_value.variant.metafields.custom.variant_color_swatch.value %}
 
-  <span class="custom-variant-swatch">
-    {{
-      variant_display.variant_image
-      | image_url: width: 60
-      | image_tag:
-        loading: 'lazy',
-        widths: '60',
-        alt: product_option_value.name
-    }}
-  </span>
+{% if variant_display and variant_display.variant_image %}
 
-{% elsif variant_display != blank and variant_display.color_swatch != blank %}
-
-  <span
-    class="custom-variant-color"
-    style="background-color: {{ variant_display.color_swatch }};"
-  ></span>
+  {{
+    variant_display.variant_image
+    | image_url: width: 60
+    | image_tag: loading: 'lazy'
+  }}
 
 {% else %}
 
